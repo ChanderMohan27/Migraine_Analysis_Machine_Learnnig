@@ -7,15 +7,27 @@ load_data:
   raw_data_csv: Dataset/Raw/migraine_data.csv
 
 split_data:
-  train_path: data/processed/train_migraine.csv
-  test_path: data/processed/test_migraine.csv
+  train_path: Dataset/processed/train_migraine.csv
+  test_path: Dataset/processed/test_migraine.csv
   test_size: 0.2
 
 estimators:
   random_forest:
     params: 
-      'criterion': 'gini'
-      'max_depth': 8
-      'min_samples_split': 3
-      'n_estimators': 300
+      criterion: 'gini'
+      max_depth: 8
+      min_samples_split: 3
+      n_estimators: 300
+model :
+  parameter :
+    scoring : "roc_auc"
+
+model_dir: 
+  saved_models : saved_models/model.joblib
+
+reports:
+  params: reports/params/params.json 
+  scores: reports/scores/scores.json
+  column_importance : reports/column_importance/column_importance.json
+
 
