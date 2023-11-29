@@ -5,10 +5,12 @@ base:
 
 load_data:
   raw_data_csv: Dataset/Raw/migraine_data.csv
+  cleaned_data_csv: Dataset/cleaned_data/migraine_data.csv
 
 split_data:
   train_path: Dataset/processed/train_migraine.csv
   test_path: Dataset/processed/test_migraine.csv
+
   test_size: 0.2
 
 estimators:

@@ -1,0 +1,45 @@
+stages:
+  load_data:
+    cmd: python src/Data_preprocessing.py --config=params.yaml
+    deps:
+    - src/read_data.py
+    - Dataset/Raw/migraine_data.csv
+    outs:
+    - Dataset/cleaned_data/migraine_data.csv
+
+  split_data:
+    cmd: python src/spliting_data.py --config=params.yaml
+    deps: 
+    - src/read_data.py
+    - scr/Data_preprocessing.py
+    - Dataset/cleaned_data/migraine_data.csv
+    outs:
+    - Dataset/Processed/train_migraine.csv
+    - Dataset/Processed/test_migraine.csv
+
+  train_and_evaluate:
+    cmd: python src/train_model_evaluation.py --config=params.yaml
+    deps:
+    - Dataset/Processed/train_migraine.csv
+    - Dataset/Processed/test_migraine.csv 
+    - src/read_data.py
+    - scr/Data_preprocessing.py
+    - src/spliting_data.py
+    params:
+    - estimators.random_forest.params.criterion
+    - estimators.random_forest.params.max_depth
+    - estimators.random_forest.params.min_samples_split
+    - estimators.random_forest.params.n_estimators
+
+    metrics:
+    - reports/scores.json:
+        cache: false
+    - reports/params.json: 
+        cache: false
+    outs:
+    - saved_models/model.joblib
+    
+
+
+
+
