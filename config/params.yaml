@@ -1,0 +1,22 @@
+base:
+  project: Migraine Analysis
+  random_state: 42
+  target_col: TARGET
+
+load_data:
+  raw_data_csv: Dataset/Raw/migraine_data.csv
+
+split_data:
+  train_path: data/processed/train_migraine.csv
+  test_path: data/processed/test_migraine.csv
+  test_size: 0.2
+
+estimators:
+  random_forest:
+    params: 
+      criterion: 'gini',
+      max_depth: 8,
+      min_samples_split: 3,
+      n_estimators: 300
+
+model_dir: saved_models

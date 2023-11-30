@@ -22,13 +22,16 @@ def target_coverter(number):
 
 def pre_process(config_path):
     df = get_data(config_path)
+    config = read_params(config_path)
+    cleaned_data = config["load_data"]["cleaned_data"]
     encoder = LabelEncoder()
     df['Type_num'] = encoder.fit_transform(df['Type'])
     df = df.drop(columns='Type')
 
     df["Age"] = df["Age"].map(converter)
     df["Type_num"] = df["Type_num"].apply(target_coverter)
-    
+    df.to_csv(cleaned_data, sep=",", index=False, encoding="utf-8")
+
     return df 
 
     # all_columns = data.columns

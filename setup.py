@@ -4,7 +4,7 @@ setup(
     name='src',
     packages=find_packages(),
     version='0.1.0',
-    description='This Project is about Migraine Analysis Proje',
+    description='This Project is about Migraine Analysis Project',
     author='Chander',
     license='MIT',
 )
