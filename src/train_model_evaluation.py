@@ -14,7 +14,9 @@ from sklearn.metrics import roc_auc_score, accuracy_score, f1_score, roc_curve
 import joblib
 
 def model_processing(config_path):
+
     config = read_params(config_path)
+    split_data = split_data(config_path)
     train_data_path = config["split_data"]["train_path"]
     test_data_path = config["split_data"]["test_path"]
     save_model_path = config["model_dir"]
