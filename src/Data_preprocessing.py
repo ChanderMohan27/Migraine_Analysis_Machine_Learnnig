@@ -23,7 +23,7 @@ def target_coverter(number):
 def pre_process(config_path):
     df = get_data(config_path)
     config = read_params(config_path)
-    cleaned_data = config["load_data"]["cleaned_data"]
+    cleaned_data = config["load_data"]["cleaned_data_csv"]
     encoder = LabelEncoder()
     df['Type_num'] = encoder.fit_transform(df['Type'])
     df = df.drop(columns='Type')
