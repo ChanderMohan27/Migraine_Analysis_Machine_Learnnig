@@ -1,57 +1,32 @@
+# Project Name 
+
 Migraine_Analysis
-==============================
 
-This Project is about Migraine Analysis Proje
+## Overview
 
-Project Organization
-------------
+ In this machine learning project, the primary focus is on establishing a robust MLOps pipeline, integrating it with a CI/CD pipeline, and leveraging the Data Version Control (DVC) framework. The goal is to streamline and automate the end-to-end machine learning lifecycle.
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+ ## Dataset
+
+ The dataset used in this project is taken from Kaggle. You can download the dataset [here](https://www.kaggle.com/datasets/ranzeet013/migraine-dataset).
 
 
---------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+ The migraine dataset provides detailed insights into migraine headaches, covering demographic details like age, specifics of each episode (duration, frequency), and characteristics of pain (location, intensity). It also includes accompanying symptoms such as nausea and vomiting, offering a holistic view. Additionally, sensory and neurological aspects like phonophobia, photophobia, and visual disturbances are considered. This dataset holds significant potential for research, diagnosis, and treatment strategies, serving as a valuable resource for uncovering patterns and correlations in the world of migraines.
+
+
+## CI-CD Pipline and Model Selection 
+
+To develop this model using a CI/CD pipeline, we utilized Cookiecutter to establish the project structure. For Data Version Control, the DVC framework along with dvc-gdrive was employed. After structuring the project, we implemented a dvc.yaml file, segregating the code into distinct modules like load_data.py, Data_preprocessing.py, and train_model.py. The chosen model is a Random Forest, suitable for this classification problem given the imbalanced nature of the data. To address the imbalance, we aggregated some target values. Additionally, feature engineering was applied to identify and utilize the top 10 relevant features.
+
+
+## Results Storage
+
+We utilize JSON files to automatically store important results from our model evaluation. The following metrics are stored:
+
+- **F1 Score:** The F1 score is a measure of a model's accuracy that considers both precision and recall. You can find the F1 score results in the `report/scores.json` file.
+
+- **Accuracy:** The accuracy metric represents the overall correctness of the model. Our accuracy results are stored in the `report/scores.json` file.
+
+These JSON files serve as valuable references for assessing the performance of our model over time.
+

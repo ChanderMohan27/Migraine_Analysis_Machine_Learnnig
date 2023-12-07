@@ -2,5 +2,5 @@
     "criterion": "gini",
     "max_depth": 8,
     "min_samples_split": 3,
-    "n_estimators": 300
+    "n_estimators": 100
 }
