@@ -8,8 +8,8 @@ load_data:
   cleaned_data_csv: Dataset/cleaned_data/migraine_data.csv
 
 split_data:
-  train_path: Dataset/processed/train_migraine.csv
-  test_path: Dataset/processed/test_migraine.csv
+  train_path: Dataset/Processed/train_migraine.csv
+  test_path: Dataset/Processed/test_migraine.csv
 
   test_size: 0.2
 
